@@ -1,0 +1,37 @@
+name: PART6 - CH2 - AWS ECR Build and Push
+on: workflow_dispatch
+env:
+  ECR_REPOSITORY: ${{ vars.ECR_REPOSITORY }}
+jobs:
+  build:
+    name: Humancat Build
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+      - name: Move Python Sample code
+        run: |
+          mv build_sample/container_build/* ./
+      - name: "Set up Python"
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.8"
+      - name: Setup AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-region: ap-northeast-2
+          role-to-assume: ${{ secrets.AWS_ASSUME_ROLE_ARN }}
+          role-duration-seconds: 900
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+      - name: Docker Build
+        run: |
+          docker build -t $ECR_REPOSITORY:latest .
+      - name: Push to Amazon ECR
+        run: |
+          docker push $ECR_REPOSITORY:latest
+
+      
