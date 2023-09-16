@@ -5015,10 +5015,10 @@ try {
 
   var hc = new humancat.Humancat(human_name=humanName, cat_name=catName);
 
-  core.setOutput("human-name", hc.name);
-  core.setOutput("human-age", hc.age);
-  core.setOutput("cat-name", hc.name);
-  core.setOutput("cat-status", hc.status);
+  core.setOutput("human-name", hc.human.GetName());
+  core.setOutput("human-age", hc.human.GetAge());
+  core.setOutput("cat-name", hc.cat.GetName());
+  core.setOutput("cat-status", hc.cat.GetStatus());
 
 } catch (error) {
   core.setFailed(error.message);
