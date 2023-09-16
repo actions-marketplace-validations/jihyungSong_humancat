@@ -22,5 +22,7 @@ runs:
   using: 'node16'
   main: 'index.js'
 branding:
-  icon: check
-  color': orange
+  icon: cloud-snow
+  color': yellow
+
+droplet
