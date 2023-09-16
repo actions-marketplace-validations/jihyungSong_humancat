@@ -33,7 +33,7 @@ The status of the cat
 ## Example usage
 
 ```yaml
-uses: actions/humancat
+uses: jihyungSong/humancat@v1.0
 with:
   human-name: 'Leo'
   cat-name: 'Nabi'
