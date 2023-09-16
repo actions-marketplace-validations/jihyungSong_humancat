@@ -1,6 +1,6 @@
 # HumanCat Action
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+This action is generated New person with cat.
 
 ## Inputs
 
